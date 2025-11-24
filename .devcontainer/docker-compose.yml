@@ -29,7 +29,7 @@ services:
       - dev
   
   liquibase:
-    image: liquibase:4.33
+    image: liquibase/liquibase:4.33.0
     env_file:
       - .env
     environment:
