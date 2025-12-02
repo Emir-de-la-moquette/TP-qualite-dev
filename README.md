@@ -1,3 +1,9 @@
+# QUESTIONS
+
+- [questions exo 1](./EXERCICE_1.md)
+- [questions exo 2](./EXERCICE_2.md)
+- [questions exo 4](./EXERCICE_4.md)
+
 
 # Development Quality - Order Flow
 
