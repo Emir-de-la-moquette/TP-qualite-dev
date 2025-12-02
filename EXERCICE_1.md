@@ -15,17 +15,15 @@
 
 ```
 ┌─────────────────────────┐
-│  Store Front (UI/Web)   │
+│       Store Front       │
 └───────▲─────────────────┘
         │ Rendu web
 ┌───────┴─────────────────┐
 │   Store Back Service    │
-│  (Domaine magasin)      │
 └───────┬─────────────────┘
         │ Appel Données
 ┌───────┴─────────────────┐
 │   Product Registry      │
-│  (Domaine produit)      │
 └───────┬─────────────────┘
         │ Request BD
         ▼
