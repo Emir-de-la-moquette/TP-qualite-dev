@@ -15,8 +15,12 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * JPA-based implementation of {@link OutboxRepository}.
+ * 
+ * Manages persistence and processing state of {@link OutboxEntity}
+ * using the outbox pattern.
  */
+
 
 @ApplicationScoped
 @DefaultBean

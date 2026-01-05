@@ -22,7 +22,24 @@ import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView.ProductViewE
 import jakarta.enterprise.context.ApplicationScoped;
 
 /**
- * TODO: Complete Javadoc
+ * Projecteur responsable de matérialiser l'état d'un {@link org.ormi.priv.tfa.orderflow.kernel.product.Product}
+ * dans une {@link org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView} lisible par les APIs de lecture.
+ *
+ * <p>Ce projecteur reçoit des {@code ProductEventV1Envelope} et applique chaque
+ * événement pour produire une nouvelle instance de {@code ProductView}. Il gère :
+ * - la création de vues lors d'un enregistrement de produit ;
+ * - les mises à jour de nom/description ;
+ * - le retrait du produit et le marquage de la vue comme RETIRED.
+ *
+ * <p>Comportements clés :
+ * - Vérifie la cohérence métier avant d'appliquer une projection (par ex. ne pas
+ *   mettre à jour un produit retiré).
+ * - Renvoie {@link org.ormi.priv.tfa.orderflow.cqrs.Projector.ProjectionResult#noOp(String)}
+ *   lorsque l'événement est stale (séquence inférieure ou égale à la version actuelle).
+ * - Renvoie {@link org.ormi.priv.tfa.orderflow.cqrs.Projector.ProjectionResult#failed(String)}
+ *   en cas d'incohérence.
+ *
+ * todo doc OK
  */
 @ApplicationScoped
 public class ProductViewProjector implements Projector<ProductView, ProductEventV1Envelope<?>> {

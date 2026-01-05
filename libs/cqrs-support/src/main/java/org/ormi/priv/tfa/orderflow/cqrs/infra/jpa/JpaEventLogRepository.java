@@ -12,8 +12,12 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * JPA-based implementation of {@link EventLogRepository}.
+ * 
+ * Persists {@link EventEnvelope} instances as {@link EventLogEntity}
+ * using Panache and MapStruct.
  */
+
 
 @ApplicationScoped
 @DefaultBean

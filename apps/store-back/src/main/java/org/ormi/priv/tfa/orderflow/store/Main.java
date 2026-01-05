@@ -5,7 +5,13 @@ import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
 /**
- * TODO: Complete Javadoc
+ * Point d'entrée (bootstrap) pour l'application Quarkus {@code store-back}.
+ *
+ * <p>Démarre l'application via {@link Quarkus#run(Class, java.util.function.BiConsumer, String[])}
+ * en déclarant l'implémentation {@link QuarkusApplication} interne qui
+ * attend indéfiniment l'arrêt de l'application via {@link Quarkus#waitForExit()}.
+ *
+ * todo doc OK
  */
 
 @QuarkusMain

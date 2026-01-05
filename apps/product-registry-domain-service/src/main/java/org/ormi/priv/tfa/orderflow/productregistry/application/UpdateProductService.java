@@ -17,7 +17,23 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application responsable de gérer les mises à jour des propriétés d'un produit.
+ *
+ * <p>Expose deux méthodes de gestion pour traiter les commandes de mise à jour :
+ * - {@code handle(UpdateProductNameCommand)} : met à jour le nom d'un produit,
+ * - {@code handle(UpdateProductDescriptionCommand)} : met à jour la description.
+ *
+ * <p>Chaque opération suit le même workflow CQRS/Event Sourcing :
+ * 1. Charge l'agrégat Product depuis le référentiel,
+ * 2. Applique la modification via la méthode du domaine (qui produit un événement),
+ * 3. Persiste l'agrégat mis à jour,
+ * 4. Enregistre l'événement dans l'Event Log,
+ * 5. Publie l'événement dans l'Outbox pour les consommateurs asynchrones.
+ *
+ * <p>Les modifications ne sont autorisées que sur les produits ACTIFS
+ * (cette validation est appliquée par le Kernel).
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

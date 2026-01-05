@@ -16,7 +16,17 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Implémentation JPA du contrat {@link ProductRepository}.
+ *
+ * <p>Cette classe gère la persistance de l'agrégat {@link Product} en base de données :
+ * - {@code save()} : crée ou met à jour l'entité JPA en utilisant le mappeur,
+ * - {@code findById()} : récupère un produit par son identifiant et le reconvertit en agrégat,
+ * - {@code existsBySkuId()} : vérifie l'existence d'un SKU (important pour éviter les doublons).
+ *
+ * <p>Utilise Panache pour simplifier les opérations JPA et MapStruct pour la
+ * bidirectionnel conversion agrégat ↔ entité.
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

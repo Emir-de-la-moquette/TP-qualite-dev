@@ -29,7 +29,18 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.UriInfo;
 
 /**
- * TODO: Complete Javadoc
+ * Contrôleur REST exposant les API de commande (CQRS Write) du Product Registry.
+ *
+ * <p>Définit les endpoints HTTP pour les opérations d'écriture :
+ * - {@code POST /products} : enregistrer un nouveau produit,
+ * - {@code DELETE /products/{id}} : retirer un produit,
+ * - {@code PATCH /products/{id}/name} : mettre à jour le nom,
+ * - {@code PATCH /products/{id}/description} : mettre à jour la description.
+ *
+ * <p>Chaque endpoint façade reçoit des DTOs, les convertit en commandes via le mappeur,
+ * délègue au service applicatif correspondant, et retourne la réponse HTTP appropriée.
+ *
+ * todo doc OK
  */
 
 @Path("/products")

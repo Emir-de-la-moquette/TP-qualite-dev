@@ -21,7 +21,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * TODO: Complete Javadoc
+ * JPA entity representing a persisted domain event in the event log.
+ * 
+ * Stores immutable event data associated with an aggregate, including
+ * its type, identifier, version, occurrence time, and serialized payload.
+ * Used for event sourcing, auditing, and event publishing.
  */
 
 @Getter

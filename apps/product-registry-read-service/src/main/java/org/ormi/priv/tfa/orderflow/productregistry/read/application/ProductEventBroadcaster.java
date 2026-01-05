@@ -9,7 +9,17 @@ import io.smallrye.mutiny.subscription.MultiEmitter;
 import jakarta.enterprise.context.ApplicationScoped;
 
 /**
- * TODO: Complete Javadoc
+ * Diffuseur d'événements (broadcaster) utilisant Mutiny pour les flux événementiels en temps réel.
+ *
+ * <p>Maintient une liste thread-safe d'émetteurs (un par client connecté) et diffuse
+ * les changements à tous les abonnés en temps réel :
+ * - {@code broadcast()} : envoie un élément à tous les émetteurs,
+ * - {@code stream()} : crée un nouveau flux Multi auquel un client peut s'abonner.
+ *
+ * <p>Utilé via des endpoints WebSocket pour les streamed des événements produits/actualisés
+ * sur les produits. Chaque client obtient ses propres émetteur/flux.
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

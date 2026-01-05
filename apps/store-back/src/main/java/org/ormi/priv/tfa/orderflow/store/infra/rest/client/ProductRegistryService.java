@@ -12,7 +12,16 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 
 /**
- * TODO: Complete Javadoc
+ * Client REST (Quarkus Rest Client) pour l'API de lecture du Product Registry.
+ *
+ * <p>Expose les opérations de requête (CQRS Read) :
+ * - {@code searchProducts()} : rechercher/lister les produits,
+ * - {@code getProductById()} : récupérer un produit par identifiant.
+ *
+ * <p>Configuration via {@code product-registry-read-api} dans les propriétés Quarkus.
+ * À utiliser par le {@code store-back} pour afficher les produits disponibles.
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

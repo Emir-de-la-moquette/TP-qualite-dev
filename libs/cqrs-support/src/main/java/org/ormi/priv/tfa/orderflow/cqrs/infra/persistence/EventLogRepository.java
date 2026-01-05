@@ -2,9 +2,10 @@ package org.ormi.priv.tfa.orderflow.cqrs.infra.persistence;
 
 import org.ormi.priv.tfa.orderflow.cqrs.EventEnvelope;
 import org.ormi.priv.tfa.orderflow.cqrs.infra.jpa.EventLogEntity;
+import org.ormi.priv.tfa.orderflow.cqrs.infra.jpa.OutboxEntity;
 
 /**
- * TODO: Complete Javadoc
+ * Interface to store Logs for {@link OutboxEntity} repository
  */
 
 public interface EventLogRepository {

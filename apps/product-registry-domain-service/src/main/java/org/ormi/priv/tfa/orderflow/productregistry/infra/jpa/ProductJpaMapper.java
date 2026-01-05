@@ -9,7 +9,17 @@ import org.ormi.priv.tfa.orderflow.kernel.product.ProductIdMapper;
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuIdMapper;
 
 /**
- * TODO: Complete Javadoc
+ * Mappeur MapStruct pour la conversion bidirectionnelle agrégat ↔ entité JPA.
+ *
+ * <p>Définit les transformations :
+ * - {@code toDomain()} : convertit {@link ProductEntity} en {@link Product},
+ * - {@code toEntity()} : convertit {@link Product} en {@link ProductEntity},
+ * - {@code updateEntity()} : met à jour partiellement une entité depuis l'agrégat.
+ *
+ * <p>Délègue aux mappeurs de types valeurs ({@link ProductIdMapper}, {@link SkuIdMapper})
+ * pour la conversion des wrappers immuables.
+ *
+ * todo doc OK
  */
 
 @Mapper(

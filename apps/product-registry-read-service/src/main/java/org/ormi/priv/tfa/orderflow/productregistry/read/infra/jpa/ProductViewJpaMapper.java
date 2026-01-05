@@ -20,7 +20,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * TODO: Complete Javadoc
+ * Mappeur MapStruct responsable de transformer {@link ProductView} ↔ {@link ProductViewEntity}.
+ *
+ * <p>Gère les conversions bidirectionnelles :
+ * - {@code toDomain()} : convertit l'entité JPA en domaine ProductView,
+ * - {@code toEntity()} : convertit ProductView en entité JPA,
+ * - {@code updateEntity()} : met à jour partiellement une entité.
+ *
+ * <p>Gérant la sérialisation JSON des listes complexes d'événements et de catalogues
+ * via les méthodes utilitaires {@code productViewEventListToJsonNode} et compagnie.
+ *
+ * todo doc OK
  */
 
 @Mapper(

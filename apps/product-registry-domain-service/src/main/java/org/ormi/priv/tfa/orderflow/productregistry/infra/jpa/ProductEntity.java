@@ -17,7 +17,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * TODO: Complete Javadoc
+ * Entité JPA représentant la table de persistance de l'agrégat Product.
+ *
+ * <p>Cette entité stocke l'état courant du produit dans la base de données
+ * (schéma "domain") :
+ * - {@code id} : identifiant UUID du produit (clé primaire, immuable),
+ * - {@code name} et {@code description} : propriétés textuelles modifiables,
+ * - {@code skuId} : identifiant SKU unique et immuable,
+ * - {@code status} : énumération {@link ProductLifecycle} (ACTIVE ou RETIRED),
+ * - {@code version} : numéro de version pour l'optimistic locking.
+ *
+ * <p>Un index unique sur {@code sku} garantit l'unicité des SKU.
+ *
+ * todo doc OK
  */
 
 @Getter

@@ -14,7 +14,18 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application (CQRS Read) responsable des opérations de lecture et de streaming.
+ *
+ * <p>Expose les méthodes de requête pour accéder aux vues matérialisées ({@link ProductView}) :
+ * - {@code findById()} : récupère un produit par identifiant,
+ * - {@code searchProducts()} : recherche paginée par pattern de SKU,
+ * - {@code streamProductEvents()} : flux événementiel d'un produit en particulier (via WebSocket),
+ * - {@code streamProductListEvents()} : flux événementiel de changements dans une liste paginée.
+ *
+ * <p>Collabore avec {@link ProductEventBroadcaster} pour diffuser les changements
+ * aux clients connectés en temps réel.
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

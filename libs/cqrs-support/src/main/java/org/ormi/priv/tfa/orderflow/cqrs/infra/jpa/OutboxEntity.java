@@ -18,8 +18,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * TODO: Complete Javadoc
+ * JPA entity representing an outbox entry.
+ * 
+ * References a persisted event and tracks its delivery attempts
+ * and retry scheduling for reliable event publishing.
  */
+
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

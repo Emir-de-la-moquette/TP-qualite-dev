@@ -33,7 +33,20 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Consommateur d'Outbox avec polling partitionné pour traiter les événements
+ * en parallèle et mettre à jour les vues matérialisées.
+ *
+ * <p>Architecture :
+ * - Un {@code ScheduledExecutorService} qui lance les polls à intervalle régulier,
+ * - {@code PARTITIONS} (= nombre de CPU) threads de travail distribués par partition,
+ * - Récupère les entrées Outbox "prêtes" par agrégat en lots ({@code BATCH_SIZE}),
+ * - Dispatche à {@link ProjectionDispatcher} pour mise à jour des vues,
+ * - Gère les retries avec délai exponentiel et un maximum d'attempts.
+ *
+ * <p>La classe démarre automatiquement au boot de l'app (via {@code @Startup})
+ * et arrête proprement les threads à l'arrêt.
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

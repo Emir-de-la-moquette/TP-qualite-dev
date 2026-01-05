@@ -18,7 +18,18 @@ import jakarta.resource.spi.IllegalStateException;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Orchestrateur responsable de dispatcher les événements vers les projecteurs
+ * et de mettre à jour les vues matérialisées.
+ *
+ * <p>Reçoit les {@link ProductEventV1Envelope} depuis l'Outbox/le consommateur
+ * et coordonne :\n * 1. L'application de la projection via {@link ProductViewProjector},
+ * 2. La sauvegarde de la vue mise à jour,
+ * 3. La diffusion du changement aux clients abonnés via {@link ProductEventBroadcaster}.
+ *
+ * <p>Gère également les cas d'erreur/no-op en fonction du résultat de projection.
+ * Tout se déroule au sein d'une transaction pour garantir la cohérence.
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

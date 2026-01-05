@@ -22,7 +22,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * TODO: Complete Javadoc
+ * Entité JPA représentant la table de la vue matérialisée du Product Registry.
+ *
+ * <p>Cette entité stocke l'état lu et optimisé du produit (schéma "read_product_registry") :
+ * - {@code id} : identifiant UUID du produit,
+ * - {@code version} : numéro de version synchronisé avec l'Event Log,
+ * - {@code skuId}, {@code name}, {@code description}, {@code status} : données principales,
+ * - {@code events} : historique des événements (JSONB), pour la traçabilité,
+ * - {@code catalogs} : références aux catalogues (JSONB),
+ * - {@code createdAt}, {@code updatedAt} : timestamps de création/modification.
+ *
+ * <p>Un index sur {@code sku_id} permet des recherches rapides par SKU.
+ * Cette vue est peuplée par le {@link org.ormi.priv.tfa.orderflow.productregistry.read.projection.ProductViewProjector}.
+ *
+ * todo doc OK
  */
 
 @Getter

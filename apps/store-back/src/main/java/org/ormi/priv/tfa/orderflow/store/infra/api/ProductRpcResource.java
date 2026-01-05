@@ -28,7 +28,19 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response.Status;
 
 /**
- * TODO: Complete Javadoc
+ * Contrôleur REST du {@code store-back} implémentant une RPC (Remote Procedure Call)
+ * de haut niveau pour les opérations produit.
+ *
+ * <p>Façade orchestrante exposant des opérations métier composées :
+ * - {@code registerProduct()} : enregistrement direct,
+ * - {@code updateProduct()} : mise à jour avec opérations complexes/multiples,
+ * - {@code retireProduct()} : retrait.
+ *
+ * <p>Délègue aux clients REST {@link ProductRegistryService} et
+ * {@link ProductRegistryDomainService} pour communiquer avec le Product Registry
+ * et effectue l'orchestration des appels asynchrones via Mutiny {@link Uni}.
+ *
+ * todo doc OK
  */
 
 @Path("/products")

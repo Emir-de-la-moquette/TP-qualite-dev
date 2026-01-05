@@ -4,7 +4,10 @@ import java.time.Instant;
 import java.util.UUID;
 
 /**
- * TODO: Complete Javadoc
+ * Envelope for a {@link DomainEvent} containing technical metadata
+ * such as sequence number and timestamp.
+ *
+ * @param <E> the type of domain event
  */
 
 public class EventEnvelope<E extends DomainEvent> {

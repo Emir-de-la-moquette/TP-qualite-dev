@@ -4,6 +4,9 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+/*
+* Interface for DomainEvent
+*/
 public interface DomainEvent {
     default String eventType() {
         return this.getClass().getSimpleName();

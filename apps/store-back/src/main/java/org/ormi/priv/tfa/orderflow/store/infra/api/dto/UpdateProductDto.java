@@ -6,7 +6,21 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * TODO: Complete Javadoc
+ * DTO encapsulant une demande complexe de mise à jour de produit avec opérations multiples.
+ *
+ * <p>Structure :
+ * - {@code id} : identifiant du produit à modifier,
+ * - {@code operations} : tableau d'opérations polymorphes à appliquer.
+ *
+ * <p>Types d'opérations supportées (via {@link UpdateOperation}) :
+ * - {@code UpdateNameOperation} : change le nom du produit,
+ * - {@code UpdateDescriptionOperation} : change la description.
+ *
+ * <p>Utilise la sérialisation polymorphe Jackson avec annotation
+ * {@code @JsonTypeInfo} et {@code @JsonSubTypes} pour supporter
+ * la désérialisation intelligente des opérations hétérogènes.
+ *
+ * todo doc OK
  */
 
 public record UpdateProductDto(String id, UpdateOperation[] operations) {

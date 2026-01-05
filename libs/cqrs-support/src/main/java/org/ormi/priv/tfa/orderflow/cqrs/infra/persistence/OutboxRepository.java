@@ -5,7 +5,10 @@ import java.util.List;
 import org.ormi.priv.tfa.orderflow.cqrs.infra.jpa.OutboxEntity;
 
 /**
- * TODO: Complete Javadoc
+ * Repository for managing {@link OutboxEntity} entries used in the outbox pattern.
+ * 
+ * Provides operations to publish events, fetch ready-to-process entries,
+ * and handle success or failure of processing.
  */
 
 public interface OutboxRepository {

@@ -82,6 +82,7 @@ il gère les opérations puis met à jour les évènements liés
         |                        |<---------------------------|
 
 ```
+(chatgpt à refait le truc propre)
 
 ### 4. Expliquer comment l'Outbox Pattern peut être utilisé pour gérer les erreurs de livraison des événements dans cette base de code. Référez-vous ici au schéma de données dans les fichiers XML liquibase et aux implémentations concrètes.
 

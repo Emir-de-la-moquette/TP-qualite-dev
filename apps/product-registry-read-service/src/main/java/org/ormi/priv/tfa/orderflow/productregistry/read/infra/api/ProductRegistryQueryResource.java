@@ -22,7 +22,17 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
 /**
- * TODO: Complete Javadoc
+ * Contrôleur REST exposant les API de requête (CQRS Read) du Product Registry.
+ *
+ * <p>Définit les endpoints HTTP pour les opérations de lecture :
+ * - {@code GET /products} : rechercher/lister les produits (paginé, filtrable par SKU),
+ * - {@code GET /products/{id}} : récupérer un produit par identifiant.
+ *
+ * <p>Chaque endpoint façade délègue au {@link ReadProductService}, convertit
+ * la réponse en DTO via les mappeurs, et retourne la réponse HTTP appropriée
+ * (OK 200 ou NOT_FOUND 404).
+ *
+ * todo doc OK
  */
 
 @Path("/products")

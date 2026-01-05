@@ -15,7 +15,19 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application responsable de gérer le retrait (déactivation) des produits.
+ *
+ * <p>Implémente le workflow de retrait d'un produit (transition ACTIVE → RETIRED) :
+ * 1. Charge l'agrégat Product,
+ * 2. Applique le retrait via la méthode du domaine (qui valide et produit l'événement),
+ * 3. Persiste l'agrégat modifié,
+ * 4. Enregistre l'événement {@code ProductRetired} dans l'Event Log,
+ * 5. Publie l'événement via l'Outbox pour notification asynchrone.
+ *
+ * <p>Le retrait est irréversible : un produit retiré ne peut plus être modifié.
+ * Cette contrainte est enforced au niveau du Kernel et du Projecteur.
+ *
+ * todo doc OK
  */
 @ApplicationScoped
 public class RetireProductService {

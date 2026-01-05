@@ -13,11 +13,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * TODO: Complete Javadoc
+ * MapStruct mapper converting {@link EventEnvelope} instances
+ * into {@link EventLogEntity} for JPA persistence.
+ * 
+ * Handles extraction of aggregate metadata and serialization
+ * of the event payload to JSON.
  */
 
+
 @Mapper(
-    componentModel = "cdi",
+    componentModel = "cdi", // au moins un stage serait bien sniff
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
     injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )

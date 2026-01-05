@@ -16,7 +16,19 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application responsable de gérer l'enregistrement de nouveaux produits.
+ *
+ * <p>Implémente le workflow complet de création CQRS/Event Sourcing :
+ * 1. Valide que le SKU n'existe pas déjà,
+ * 2. Crée un nouvel agrégat {@link Product},
+ * 3. Persiste l'agrégat en base,
+ * 4. Émet un événement {@code ProductRegistered} et le persiste dans l'Event Log,
+ * 5. Publie l'événement dans l'Outbox pour notifier les consommateurs asynchrones.
+ *
+ * <p>Tous les changements sont exécutés au sein d'une seule transaction pour
+ * garantir la cohérence (atomicité du triptique : agrégat, event log, outbox).
+ *
+ * todo doc OK
  */
 
 @ApplicationScoped

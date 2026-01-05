@@ -8,7 +8,15 @@ import org.ormi.priv.tfa.orderflow.contracts.productregistry.v1.write.RegisterPr
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuIdMapper;
 
 /**
- * TODO: Complete Javadoc
+ * Mappeur MapStruct pour la conversion entre DTOs HTTP et commandes métier.
+ *
+ * <p>Transforme les DTOs reçus depuis l'API REST en commandes applicatives :
+ * - {@code toCommand()} : convertit {@link RegisterProductCommandDto} en {@link RegisterProductCommand},
+ * - {@code toDto()} : fait la conversion inverse pour les réponses.
+ *
+ * <p>Utilise {@link SkuIdMapper} pour la conversion des valeurs SKU.
+ *
+ * todo doc OK
  */
 
 @Mapper(
