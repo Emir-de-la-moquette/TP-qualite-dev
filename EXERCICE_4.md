@@ -95,26 +95,41 @@ après s'il a tjrs pas été livré alors il sera bien marqué comme FAILED sans
 - void markFailed(OutboxEntity entity, String err, int retryAfter);
 
 
+
 ## Tâche 3 : Questions concernant le journal d'évènements
 
 ### 1. Expliquer le rôle du journal d'événements dans le système de gestion des événements.
+Le journal d'événements (Event Log) est le registre immuable de tous les événements du domaine. Il constitue la source de vérité unique (single source of truth) permettant la reconstruction complète de l'état du système à tout moment. C'est la base de l'event sourcing.
 
-### 2. Pourquoi l'interface EventLogRepository ne comporte-t-elle qu'une seule méthode append ? Pourquoi n'y a-t-il pas de méthode pour récupérer les événements ou les supprimer ?
+### 2. Pourquoi l'interface EventLogRepository ne comporte-t-elle qu'une seule méthode append ?
+Append-only garantit l'immuabilité du journal. Pas de modification/suppression = cohérence garantie. Les lectures se font via des projections (Projector). C'est la séparation des responsabilités : l'Event Log n'écrit que, les lectures passent par CQRS.
 
-### 3. En tirant vos conclusions de votre réponse à la question 2 et de l'analyse de l'application (Objets liés à l'event log, schéma de base de données), déterminez les implications de cette conception sur la gestion des événements dans l'application et quelles pourraient être les autres usages du journal d'événements.
-
+### 3. Implications de cette conception et autres usages.
+L'immuabilité assure une trace d'audit complète et irrévocable. Autres usages : replay d'événements, reconstruction de projections, debugging, conformité réglementaire, migration de données.
 
 
 
 
 ## Tâche 4 : Limites de CQRS
 
-### 1. Identifier et expliquer les principales limites de l'architecture CQRS dans le contexte de l'application.
+### 1. Principales limites de CQRS.
+- Complexité accrue (multi-modèles)
+- Cohérence éventuelle (lag entre commandes et lectures)
+- Synchronisation des projections difficile
+- Coût de maintenance élevé
 
-### 2. Quelles limites intrinsèques à CQRS sont déjà compensées par la mise en œuvre actuelle de l'application ?
+### 2. Limites compensées par l'implémentation.
+Outbox Pattern garantit la livraison des événements. Projections avec ProjectionResult gèrent les erreurs proprement. Event Log assure l'audit et le replay.
 
-### 3. Quelles autres limites pourraient être introduites par cette mise en œuvre ?
+### 3. Autres limites introduites.
+Dépendance accrue à la base de données. Points de contention sur Outbox. Latence de projection imprévisible.
 
-### 4. Que se passerait-il dans le cas d'une projection multiple (un évènement donnant lieu à plusieurs actions conjointes mais de nature différente) ?
+### 4. Projection multiple.
+Les événements multiples sont publiés parallèlement vers différentes projections via les Projector concrets. Un événement peut déclencher plusieurs actions asynchrones indépendantes. Risque : incohérence temporaire entre projections.
 
-### 5. Question bonus : Proposez des solutions pour atténuer les limites identifiées dans les questions précédentes (notamment la question 3).
+### 5. Solutions pour atténuer les limites.
+- Timeouts sur les projections
+- Cache des projections fréquentes
+- Monitoring du lag Outbox-Projection
+- Idempotence obligatoire des handlers
+- Dead letter queues pour événements non traitables
